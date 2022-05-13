@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.app.web.demo.service.HighwayService;
+import com.app.web.demo.service.HistoryService;
 import com.app.web.demo.entity.Highway;
+import com.app.web.demo.entity.History;
+
 import java.util.List;
 
 @Controller
@@ -17,6 +20,9 @@ public class HighwayController {
 
     @Autowired
     private HighwayService service;
+
+    @Autowired
+    private HistoryService serviceHistory;
 
     @GetMapping({ "/", "/index" })
     public String index() {
@@ -67,5 +73,10 @@ public class HighwayController {
         return "redirect:/highway";
     }
 
-
+    @GetMapping("/highway/history/{id}")
+    public String getHistory(@PathVariable int id, Model model){
+        List<History> History = serviceHistory.getListHighway(id);
+        model.addAttribute("History", History);
+        return "/highway/history";
+    }
 }

@@ -17,36 +17,30 @@
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" th:href="@{/}">Prueba</a>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/trafficPolice/new}">Crear</a>
+            <a class="nav-link" th:href="@{/highway/new}">Crear</a>
         </li>
     </nav>
+    <div class="container">
+
+    </div>
     </br>
     <div class="container">
         <div class="row">
-            <h1>Lista de Agentes de Transito</h1>
+            <h1>Historial del agente de transito</h1>
         </div>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
-                    <th>Codigo</th>
-                    <td>Nombre Completo</td>
-                    <th>Años de experiencia</th>
-                    <th>Codigo Secretaria</th>
-                    <th>Via Actual</th>
-                    <th>Opciones</th>
+                    <th>Identificador Calle</th>
+                    <td>Identificador Agente</td>
+                    <th>Dia</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="TrafficPolice:${TrafficPolice}">
-                    <td th:text="${TrafficPolice.id}"></td>
-                    <td th:text="${TrafficPolice.name}"></td>
-                    <td th:text="${TrafficPolice.years_experience}"></td>
-                    <td th:text="${TrafficPolice.id_Secretary}"></td>
-                    <td th:text="${TrafficPolice.highway.id}"></td>
-                    <td><a class="btn btn-info" th:href="@{/trafficPolice/history/{id}(id=${TrafficPolice.id})}">Historial</a>
-                        <a class="btn btn-warning" th:href="@{/trafficPolice/edit/{id}(id=${TrafficPolice.id})}">Editar</a>
-                        <a class="btn btn-danger" th:href="@{/trafficPolice/{id}(id=${TrafficPolice.id})}">Eliminar</a>
-                    </td>
+                <tr th:each="History:${History}">
+                    <td th:text="${History.highwayId}"></td>
+                    <td th:text="${History.transitAgentId}"></td>
+                    <td th:text="${History.date}"></td>
                 </tr>
             </tbody>
         </table>

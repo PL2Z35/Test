@@ -46,7 +46,8 @@
                     <td th:text="${Highway.street_or_race}"></td>
                     <td th:text="${Highway.Number}"></td>
                     <td th:text="${Highway.congestion_level}"></td>
-                    <td><a class="btn btn-warning" th:href="@{/highway/edit/{id}(id=${Highway.id})}">Editar</a>
+                    <td><a class="btn btn-info" th:href="@{/highway/history/{id}(id=${Highway.id})}">Historial</a>
+                        <a class="btn btn-warning" th:href="@{/highway/edit/{id}(id=${Highway.id})}">Editar</a>
                         <a class="btn btn-danger" th:href="@{/highway/{id}(id=${Highway.id})}">Eliminar</a>
                     </td>
                 </tr>
