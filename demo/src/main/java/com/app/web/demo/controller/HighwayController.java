@@ -27,14 +27,14 @@ public class HighwayController {
     public String listHighway(Model model) {
         List<Highway> Highway = service.allList();
         model.addAttribute("Highway", Highway);
-        return "highway";
+        return "highway/highway";
     }
 
     @GetMapping("/highway/new")
     public String newHighway(Model model) {
         Highway highway = new Highway();
         model.addAttribute("highway", highway);
-        return "newHighway";
+        return "highway/newHighway";
     }
 
     @PostMapping("/highway")
@@ -46,7 +46,7 @@ public class HighwayController {
     @GetMapping("/highway/edit/{id}")
     public String getFormHighway(@PathVariable int id, Model model){
         model.addAttribute("highway", service.getHighwayId(id));
-        return "editHighway";
+        return "highway/editHighway";
     }
 
     @PostMapping("/highway/{id}")

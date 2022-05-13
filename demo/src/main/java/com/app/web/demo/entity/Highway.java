@@ -4,9 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.OneToOne;
 
 @Entity
-@Table(name = "highway")
+@Table(name = "highways")
 public class Highway {
 
     @Id
@@ -18,8 +19,10 @@ public class Highway {
     private String street_or_race;
     @Column(name = "number", nullable = false)
     private int number;
-    @Column(name = "congestionLevel", nullable = false)
+    @Column(name = "congestion_level", nullable = false)
     private double congestion_level;
+    @OneToOne(mappedBy="highway")
+    private TrafficPolice trafficPolice;
 
     public Highway(){
 

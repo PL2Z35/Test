@@ -10,55 +10,51 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Edicion de Vias!</title>
+    <title>Registro de Vias!</title>
 </head>
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Prueba</span>
+            <span class="navbar-brand mb-0 h1" th:href="@{/}">Prueba</span>
         </div>
     </nav>
     </br>
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center">
-                <h1 class="text-center">Edicion de Vias</h1>
+                <h1 class="text-center">Registro de Agentes de Transito</h1>
                 <div class="card-body">
-                    <form th:action="@{/highway/{id}(id=${highway.id})}" th:object="${highway}" method="POST">
+                    <form th:action="@{/trafficPolice}" th:object="${trafficPolice}" method="POST">
                         <div class="form-group">
                             <label for="">Id</label>
-                            <input type="number" name="id" th:field="*{id}" class="form-control"
+                            <input th:field="*{id}" type="number" name="id" class="form-control"
                                 placeholder="Digite el identificador." required>
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="">Tipo</label>
-                            <select class="form-select" th:field="*{type}" required>
-                                <option th:value="'Autopista'" th:text="Autopista" ></option>
-                                <option th:value="'Carretera principal'" th:text="Carretera_principal" ></option>
-                                <option th:value="'Carretera secundaria'" th:text="Carretera_secundaria" ></option>
-                            </select>
+                            <label for="">Nombre</label>
+                            <input type="text" name="name" th:field="*{name}" class="form-control"
+                                placeholder="Digite el nombre." required>
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="">Carrera o Calle?</label>
-                            <select class="form-select" th:field="*{street_or_race}" required>
-                                <option th:value="'Carrera'" th:text="Carrera" ></option>
-                                <option th:value="'Calle'" th:text="Calle" ></option>
-                            </select>
+                            <label for="">Id Secretaria</label>
+                            <input th:field="*{id_Secretary}" type="text" name="id_secretary" class="form-control"
+                                placeholder="Digite el identificador de la secretaria." required>
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="">Numero de la calle o carretera</label>
-                            <input type="number" name="number" th:field="*{number}" class="form-control"
-                                placeholder="Digite el numero." required>
+                            <label for="">Años de experiencia</label>
+                            <input th:field="*{years_experience}" type="number" name="years_experience" class="form-control"
+                                placeholder="Años de experiencia." required>
                         </div>
                         <br>
                         <div class="form-group">
-                            <label for="">Nivel de congestion</label>
-                            <input type="number" name="congestion_level" th:field="*{congestion_level}" class="form-control"
-                            placeholder="Digite el nivel de congestion." required>
+                        <label for="">Seleccione una via</label>
+                        <select class="form-select" th:field="*{highway}" required>
+                            <option th:each="Highway:${Highway}" th:value="${Highway.id}" th:text="${Highway.id}" ></option>
+                        </select>
                         </div>
                         <br>
                         <div class="box-folder">
@@ -70,9 +66,6 @@
         </div>
     </div>
     </br>
-    <div class="container">
-
-    </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

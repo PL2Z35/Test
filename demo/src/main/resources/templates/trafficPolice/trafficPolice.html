@@ -15,39 +15,36 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Prueba</a>
+        <a class="navbar-brand" th:href="@{/}">Prueba</a>
         <li class="nav-item">
-            <a class="nav-link" th:href="@{/highway/new}">Crear</a>
+            <a class="nav-link" th:href="@{/trafficPolice/new}">Crear</a>
         </li>
     </nav>
-    <div class="container">
-
-    </div>
     </br>
     <div class="container">
         <div class="row">
-            <h1>Lista de Vias</h1>
+            <h1>Lista de Agentes de Transito</h1>
         </div>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
-                    <td>Identificador</td>
-                    <th>Tipo</th>
-                    <th>Calle o Carrera</th>
-                    <th>Numero</th>
-                    <th>Congestion</th>
+                    <th>Codigo</th>
+                    <td>Nombre Completo</td>
+                    <th>Años de experiencia</th>
+                    <th>Codigo Secretaria</th>
+                    <th>Via Actual</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="Highway:${Highway}">
-                    <td th:text="${Highway.id}"></td>
-                    <td th:text="${Highway.type}"></td>
-                    <td th:text="${Highway.street_or_race}"></td>
-                    <td th:text="${Highway.Number}"></td>
-                    <td th:text="${Highway.congestion_level}"></td>
-                    <td><a class="btn btn-warning" th:href="@{/highway/edit/{id}(id=${Highway.id})}">Editar</a>
-                        <a class="btn btn-danger" th:href="@{/highway/{id}(id=${Highway.id})}">Eliminar</a>
+                <tr th:each="TrafficPolice:${TrafficPolice}">
+                    <td th:text="${TrafficPolice.id}"></td>
+                    <td th:text="${TrafficPolice.name}"></td>
+                    <td th:text="${TrafficPolice.years_experience}"></td>
+                    <td th:text="${TrafficPolice.id_Secretary}"></td>
+                    <td th:text="${TrafficPolice.highway.id}"></td>
+                    <td><a class="btn btn-warning" th:href="@{/trafficPolice/edit/{id}(id=${TrafficPolice.id})}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{/trafficPolice/{id}(id=${TrafficPolice.id})}">Eliminar</a>
                     </td>
                 </tr>
             </tbody>
