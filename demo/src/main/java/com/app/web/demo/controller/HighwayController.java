@@ -50,13 +50,13 @@ public class HighwayController {
     }
 
     @GetMapping("/highway/edit/{id}")
-    public String getFormHighway(@PathVariable int id, Model model){
+    public String getFormHighway(@PathVariable int id, Model model) {
         model.addAttribute("highway", service.getHighwayId(id));
         return "highway/editHighway";
     }
 
     @PostMapping("/highway/{id}")
-    public String updateHighway(@PathVariable int id, @ModelAttribute Highway highway){
+    public String updateHighway(@PathVariable int id, @ModelAttribute Highway highway) {
         Highway highwayExisting = service.getHighwayId(id);
         highwayExisting.setId(id);
         highwayExisting.setCongestion_level(highway.getCongestion_level());
@@ -68,13 +68,13 @@ public class HighwayController {
     }
 
     @GetMapping("/highway/{id}")
-    public String deleteHighway(@PathVariable int id){
+    public String deleteHighway(@PathVariable int id) {
         service.deleteHighway(id);
         return "redirect:/highway";
     }
 
     @GetMapping("/highway/history/{id}")
-    public String getHistory(@PathVariable int id, Model model){
+    public String getHistory(@PathVariable int id, Model model) {
         List<History> History = serviceHistory.getListHighway(id);
         model.addAttribute("History", History);
         return "/highway/history";

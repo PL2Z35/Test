@@ -40,6 +40,7 @@ public class Highway {
         return id;
     }
 
+    //records (constructores and getters and setters)
     public void setId(int id) {
         this.id = id;
     }

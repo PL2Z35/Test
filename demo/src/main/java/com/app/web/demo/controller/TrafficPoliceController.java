@@ -57,7 +57,6 @@ public class TrafficPoliceController {
         }
         model.addAttribute("Highway", Highway);
         model.addAttribute("trafficPolice", trafficPolice);
-
         return "trafficPolice/newTrafficPolice";
     }
 
