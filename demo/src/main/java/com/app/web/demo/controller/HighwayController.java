@@ -24,11 +24,6 @@ public class HighwayController {
     @Autowired
     private HistoryService serviceHistory;
 
-    @GetMapping({ "/", "/index" })
-    public String index() {
-        return "index";
-    }
-
     @GetMapping("/highway")
     public String listHighway(Model model) {
         List<Highway> Highway = service.allList();
