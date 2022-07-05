@@ -1,11 +1,7 @@
 package com.example.demo.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.example.demo.entity.Highway;
 import com.example.demo.entity.TrafficPolice;
 
 /**
@@ -13,9 +9,9 @@ import com.example.demo.entity.TrafficPolice;
  * Conector a la base de datos.
  * 
  * @author : Cristian Plazas
- * @since : 6/27/2020
+ * @since : 6/27/2022
  */
 @Repository
 public interface TrafficPoliceRepository extends JpaRepository<TrafficPolice, Long> {
-    public abstract List<Highway> findByHighway(Highway highway);
+    
 }

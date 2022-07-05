@@ -9,7 +9,7 @@ import com.example.demo.entity.Highway;
  * Conector a la base de datos.
  * 
  * @author : Cristian Plazas
- * @since : 6/27/2020
+ * @since : 6/27/2022
  */
 @Repository
 public interface HighwayRepository extends JpaRepository<Highway, Integer> {

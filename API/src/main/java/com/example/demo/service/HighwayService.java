@@ -2,7 +2,8 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.dto.HighwayDTO;
+import com.example.demo.entity.Highway;
+import com.example.demo.exception.MyException;
 
 /**
  * Servicios para el objeto Highway.
@@ -12,41 +13,46 @@ import com.example.demo.dto.HighwayDTO;
  */
 public interface HighwayService {
     /**
-     * Obtiene una lista de todas las calles.
+     * Metodo que obtiene una lista de todas las calles.
      * 
-     * @return List<HighwayDTO> : Lista de objetios de transferencia de las calles.
+     * @return Lista de calles.
      */
-    public List<HighwayDTO> allList();
+    public List<Highway> allList();
 
     /**
-     * Envia el objeto de transferencia de datos de Highway.
+     * Metodo que guarda una nueva via.
      * 
-     * @param type Objeto de transferencia de via.
-     * @return objeto de tranferencia de la via.
+     * @param highway Objeto de tipo via.
+     * @return Highway: si el objetio no existe en la base de datos.
+     * @return null: si el objeto existe en la base de datos.
      */
-    public HighwayDTO saveHighway(HighwayDTO highway);
+    public Highway saveHighway(Highway highway);
 
     /**
-     * Envia el objeto de transferencia de via.
+     * Metodo que obtiene una via por su identificador.
+     * 
+     * @param int: id Identificador de la via.
+     * @return Highway: Objeto existe en la base de datos.
+     * @Throws Exception: Si no existe la via.
+     */
+    public Highway getHighwayId(int id) throws MyException;
+
+    /**
+     * Metodo que actualiza los datos de una via.
+     * 
+     * @param highway Objeto de tipo via.
+     * @return Highway: si el objetio existe en la base de datos.
+     * @return null: si el objeto no existe en la base de datos.
+     */
+    public Highway updateHighway(Highway highway);
+
+    /**
+     * Metodo que elimina una via.
+     * 
+     * Este metodo buca una via por su identificador y la elimina.
      * 
      * @param int Identificador de la via.
-     * @return Objeto de transferencia de datos la via.
+     * @throws Exception: Si no existe la via.
      */
-    public HighwayDTO getHighwayId(int id);
-
-    /**
-     * Actualiza el objeto de transferencia de via.
-     * 
-     * @param type objeto de la via.
-     * @return Objeto de transferencia de la via.
-     */
-    public HighwayDTO updateHighway(HighwayDTO highway);
-
-    /**
-     * Elimina el objeto de transferencia de via.
-     * 
-     * @param int identificador de la via.
-     * @return True si se elimino, false si no..
-     */
-    public boolean deleteHighway(int id);
+    public void deleteHighway(int id) throws MyException;
 }

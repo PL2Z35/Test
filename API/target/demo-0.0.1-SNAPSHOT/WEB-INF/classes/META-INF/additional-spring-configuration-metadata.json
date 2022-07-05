@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "max.asignments.highway",
+    "type": "Integer.class",
+    "description": "A description for 'max.asignments.highway'"
+  },
+  {
+    "name": "max.level.congestionlevel",
+    "type": "Integer.class",
+    "description": "A description for 'max.level.congestionlevel'"
+  }
+]}

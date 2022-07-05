@@ -1,60 +1,81 @@
 package com.example.demo.service;
 
 import java.util.List;
-import com.example.demo.dto.TrafficPoliceDTO;
-import com.example.demo.entity.History;
+import com.example.demo.entity.TrafficPolice;
+import com.example.demo.exception.MyException;
 
 /**
  * Servicios para el objeto agente de transito.
  * 
  * @author : Cristian Plazas
- * @since : 6/27/2020
+ * @since : 6/27/2022
  */
 public interface TrafficPoliceService {
     /*
-     * Obtiene una lista de todos los agentes de transito.
+     * Metodo que obtiene una lista de todos los agentes de transito.
      * 
-     * @return List<TrafficPoliceDTO> : Lista de objetos de transferencia de los agentes de transito.
+     * @return List : Lista de objetos del agente de transito.
      */
-    public List<TrafficPoliceDTO> allList();
+    public List<TrafficPolice> allList();
 
     /*
-     * Guarda un nuevo agente de transito.
+     * Metodo que guarda un nuevo agente de transito.
      * 
-     * @params TrafficPoliceDTO : Objeto de transferencia de datos del agente de transito.
-     * @return TrafficPoliceDTO : Objeto que se creo.
+     * Guarda los datos del nuevo objeto en la base de datos.
+     * Genera una nueva historia.
+     * 
+     * @params TrafficPolice: Objeto agente de transito.
+     * 
+     * @return TrafficPolice: Si el agente de transito no existe en la base de
+     * datos.
+     * 
+     * @return null: Si el agente de transito ya existe en la base de datos.\
+     * 
+     * @return null: Si la via que se desea modificar ya fue asignada 3 veces o si
+     * la via tiene un nivel de congestion mayor a 30.
+     * 
+     * @return null: si la via que se la asignar al agente de transito ya a sido
+     * registrada 3 veces o si la via tiene un nivel de congestion mayor a 30.
      */
-    public TrafficPoliceDTO saveTransitAgent(TrafficPoliceDTO trafficPolice);
+    public TrafficPolice saveTransitAgent(TrafficPolice trafficPolice);
 
     /*
-     * Obtiene un agente de transito por su identificador.
+     * Metodo que obtiene un agente de transito por su identificador.
      * 
      * @params long : Identificador del agente de transito.
-     * @return TrafficPoliceDTO : Objeto de transferencia de datos del agente de transito.
-     */
-    public TrafficPoliceDTO getTransitAgentId(Long id);
-
-    /*
-     * Actualiza un agente de transito.
      * 
-     * @params TrafficPoliceDTO : Objeto de transferencia de datos del agente de transito.
-     * @return TrafficPoliceDTO : Objeto de transferencia del agente que se actualizo.
+     * @return TrafficPolice : Si existe un agente de transito con el identificador.
+     * 
+     * @Throws Exception : Si no existe un agente de transito con el identificador.
      */
-    public TrafficPoliceDTO updateTransitAgent(TrafficPoliceDTO trafficPolice);
+    public TrafficPolice getTransitAgentId(Long id) throws MyException;
 
     /*
-     * Elimina un agente de transito.
+     * Metodo que actualiza un agente de transito.
+     * 
+     * Actualiza cada parametro del agente de transito.
+     * Exceptuando el identificador.
+     * Crea una nueva historia.
+     * 
+     * @params TrafficPolice : Objeto tipo agente de transito.
+     * 
+     * @return TrafficPolice : Si existe el agente de transito.
+     * 
+     * @return null: Si la via que se desea modificar ya fue asignada 3 veces o si
+     * la via tiene un nivel de congestion mayor a 30.
+     * 
+     * @return null: si no existe el agente de transito.
+     */
+    public TrafficPolice updateTransitAgent(TrafficPolice trafficPolice);
+
+    /*
+     * Metodo que elimina un agente de transito.
+     * 
+     * Busca el agente de transito por su identificador y lo elimina.
      * 
      * @params long : Identificador del agente de transito.
-     * @return boolean : True si se elimino, false si no.
-     */
-    public boolean deleteTransitAgent(Long id);
-
-    /*
-     * Metodo para crear una nueva historia para el agente de transito.
      * 
-     * @params History : Objeto de transferencia de datos de la historia.
-     * @return History : Objeto que se creo.
+     * @throws Exception : Si no existe un agente de transito con el identificador.
      */
-    public History addHistory(History history);
+    public void deleteTransitAgent(Long id) throws MyException;
 }

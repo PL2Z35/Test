@@ -9,7 +9,7 @@ import com.example.demo.entity.History;
  * Conector a la base de datos.
  * 
  * @author : Cristian Plazas
- * @since : 6/27/2020
+ * @since : 6/27/2022
  */
 @Repository
 public interface HistoryRepository extends JpaRepository<History, Integer> {

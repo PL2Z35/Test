@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.dto.HistoryDTO;
 import com.example.demo.entity.History;
 
 /**
@@ -14,30 +13,40 @@ import com.example.demo.entity.History;
 public interface HistoryService {
 
     /**
-     * Genera una lista de todas las historias.
+     * Metodo que lista todas las historias creadas.
      * 
-     * @return List<History> : Lista de objetos tipo historia.
+     * @return List : Lista de objetos tipo historia.
      */
     public List<History> allList();
 
     /**
-     * Genera una lista de las historias de una via.
+     * Metodo que genera una lista de las historias de una via.
+     * 
+     * 1. Obtiene todas las historias.
+     * 2. Filtra las historias por el id de la via.
      * 
      * @return list : Lista de objetos tipo historia.
      */
-    public List<HistoryDTO> getListHighway(int id);
+    public List<History> getListHighway(int id);
 
     /*
-     * Genera una lista de las historias de un agente de transito.
+     * Metodo que genera una lista de las historias de un agente de transito.
+     * 
+     * 1. Obtiene todas las historias.
+     * 2. Filtra las historias por el id del agente de transito.
      * 
      * @return list : Lista de objetos tipo historia.
      */
-    public List<HistoryDTO> getListTrafficPolice(long id);
+    public List<History> getListTrafficPolice(long id);
 
     /**
-     * Guarda una nueva historia.
+     * Metodo que guarda una nueva historia.
      * 
+     * Crea una historia cada vez que se agrega un agente de transito.
+     * Crea una historia cdad vez que se modifica la via del agente de transito.
+     * 
+     * @param int id de la via y long: identificador del policia de transito.
      * @return History : Objeto que se creo.
      */
-    public History saveHistory(History history);
+    public History saveHistory(int highwayId, long trafficPoliceId);
 }
